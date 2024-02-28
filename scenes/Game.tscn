@@ -7,6 +7,9 @@
 script = ExtResource("1_mfndw")
 
 [node name="Circle" parent="." instance=ExtResource("1_lirpt")]
-position = Vector2(473, 261)
+position = Vector2(63, 64)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="died" from="Circle" to="." method="_on_circle_died"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
