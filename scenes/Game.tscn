@@ -1,15 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ijiwbkbnbqj"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ijiwbkbnbqj"]
 
 [ext_resource type="PackedScene" uid="uid://dsgeu8b086vy8" path="res://Items/circle.tscn" id="1_lirpt"]
 [ext_resource type="Script" path="res://scenes/Game.gd" id="1_mfndw"]
+[ext_resource type="PackedScene" uid="uid://dp75yg2ofd3h5" path="res://scenes/SignalManager.tscn" id="3_06efc"]
+[ext_resource type="Script" path="res://Items/SignalManager.gd" id="4_bmfta"]
+
+[sub_resource type="Gradient" id="Gradient_8jdap"]
+offsets = PackedFloat32Array(0, 0.0164835, 0.994505, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.599554, 0.617558, 1, 0.0400314, 0.19045, 0.460781, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iqvki"]
+gradient = SubResource("Gradient_8jdap")
+fill = 1
+fill_from = Vector2(0, 0.0504587)
+fill_to = Vector2(1, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_mfndw")
 
-[node name="Circle" parent="." instance=ExtResource("1_lirpt")]
-position = Vector2(63, 64)
-
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="died" from="Circle" to="." method="_on_circle_died"]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -56.0
+offset_top = -33.0
+offset_right = 1217.0
+offset_bottom = 679.0
+texture = SubResource("GradientTexture2D_iqvki")
+
+[node name="SignalManager" parent="." instance=ExtResource("3_06efc")]
+script = ExtResource("4_bmfta")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Circle" parent="Node" instance=ExtResource("1_lirpt")]
+position = Vector2(63, 64)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

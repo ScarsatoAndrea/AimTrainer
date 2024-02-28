@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsgeu8b086vy8"]
+[gd_scene load_steps=4 format=3 uid="uid://dsgeu8b086vy8"]
 
-[ext_resource type="Texture2D" uid="uid://dqwgrq60tnet6" path="res://icon.svg" id="1_ejtoc"]
+[ext_resource type="Texture2D" uid="uid://crv0kbrjjj01e" path="res://dd73873e4af7c1d1ac5a41583344ea92.png" id="1_xycpv"]
 [ext_resource type="Script" path="res://Items/sprite_2d.gd" id="2_21bdm"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5dgbp"]
+radius = 61.8142
+
 [node name="Circle" type="Sprite2D"]
-texture = ExtResource("1_ejtoc")
+texture = ExtResource("1_xycpv")
 script = ExtResource("2_21bdm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5dgbp")
