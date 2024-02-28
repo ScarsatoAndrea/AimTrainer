@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsgeu8b086vy8"]
+
+[ext_resource type="Texture2D" uid="uid://dqwgrq60tnet6" path="res://icon.svg" id="1_ejtoc"]
+[ext_resource type="Script" path="res://Items/sprite_2d.gd" id="2_21bdm"]
+
+[node name="Circle" type="Sprite2D"]
+texture = ExtResource("1_ejtoc")
+script = ExtResource("2_21bdm")
