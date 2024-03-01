@@ -12,6 +12,9 @@ var can_start : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_timer(speed)
+	$SignalManager.connect("died", Callable(self, "on_circle_died"))
+	$SignalManager.connect("hit", Callable(self, "on_circle_hit"))
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,8 +49,6 @@ func _on_timer_timeout():
 		var figa = element.instantiate()
 		figa.position = Vector2(x, y)
 		$Node.add_child(figa)
-		$SignalManager.connect("died", Callable(self, "on_circle_died"))
-		$SignalManager.connect("hit", Callable(self, "on_circle_hit"))
 
 
 func on_circle_hit():
