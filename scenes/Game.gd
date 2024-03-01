@@ -15,8 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if time >= trashold and speed > 0:
-		speed -= 0.22
+	if time >= trashold and speed > 0.3:
+		speed -= 0.18
 		set_timer(speed)
 		time += 1
 		trashold += 7
@@ -38,11 +38,17 @@ func on_circle_died():
 
 
 func _on_timer_timeout():
+	var pre_x = 0
+	var pre_y = 0
 	if can_start:
 		print("nato")
 		time += round($Timer.wait_time)
 		x = (random.randi() % 818) + 167
 		y = (random.randi() % 314) + 167
+		x = x if x <= pre_x + 30 and x >= pre_x - 10  else x + 25
+		y = y if y <= pre_y + 30 and  y >= pre_y - 10 else y + 25
+		pre_x = x
+		pre_y = y
 		var figa = element.instantiate()
 		figa.position = Vector2(x, y)
 		$Node.add_child(figa)
