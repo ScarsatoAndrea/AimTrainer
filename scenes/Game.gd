@@ -19,7 +19,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if time >= trashold and speed > 0.3:
-		speed -= 0.18
+		speed -= 0.2
 		set_timer(speed)
 		time += 1
 		trashold += 7
